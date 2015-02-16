@@ -2,7 +2,7 @@ The commands below are a guide to installing and configuring Xibo on a Centos 6 
 
 These instructions assume that your hardware is functioning correctly, any RAID etc is externally managed (maybe in a RAID card) and that a vanilla Centos 6 Mininal Installation has completed suceesfully with no errors.
 
-Centos 6 is available for x686 and IA64 archtitecture here: http://wiki.centos.org/Download
+Centos 6 is available for x86 and x64 archtitecture here: http://wiki.centos.org/Download
 
 Some of the steps below require additional inputs from you the administrator, these are marked.
 
