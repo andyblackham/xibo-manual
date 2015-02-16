@@ -5,5 +5,6 @@ The [[PRODUCTNAME]] CMS can be run on any operating system that supports PHP/MyS
 The following pages contain basic guides to configuring the most common environments.
 
 - [Install on Linux](install_environment_linux.html)
+- [Install on Centos 6](Install_environment_centos6_minimal)
 - [Install on Windows using XAMPP](install_environment_windows_xampp.html)
 - [Install on Windows using IIS](install_environment_windows_iis.html)
