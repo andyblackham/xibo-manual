@@ -109,7 +109,7 @@ then visit `http://<youripaddress>/xibo`
 and begin the setup.
 
 
-Once it's running, I generally change the webroot directory in httpd.conf to /var/www/html/xibo so the access address is simply `http://<youripaddress>` and also remove the downloaded installation archive
+Once it's running, I generally change the webroot directory in httpd.conf to /var/www/html/xibo so the access address is simply `http://<youripaddress>` and also remove the downloaded installation archive. Or move it out of the webroot!
 ```
 cd /var/www/html
 rm 1.7.1.tar.gz
