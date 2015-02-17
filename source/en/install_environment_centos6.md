@@ -70,7 +70,8 @@ nano /etc/php.d/json.ini
 ```
 It needs to be like this:
 ```
-
+# Json Extension
+extension=json.so
 ```
 
 edit config php to suit
