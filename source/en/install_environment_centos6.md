@@ -21,7 +21,7 @@ Open port 80 on the built-in firewall
 iptables -A INPUT -p tcp -m tcp --sport 80 -j ACCEPT iptables -A OUTPUT -p tcp -m tcp --dport 80 -j ACCEPT 
 ```
 
-Restart network services to acquire an IP address
+Restart network services to acquire / use an IP address
 ```
 service network restart
 ```
