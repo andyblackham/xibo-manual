@@ -4,5 +4,5 @@ These instructions assume that your hardware is functioning correctly, any RAID 
 
 Centos 6 is available for x86 and x64 archtitecture here: http://wiki.centos.org/Download
 
-Some of the steps below require additional inputs from you the administrator, these are marked.
+Some of the steps below require additional inputs from you the administrator, these are marked; please also refer to the Security Page for further security advice and considerations.
 
