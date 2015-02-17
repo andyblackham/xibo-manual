@@ -51,7 +51,7 @@ install apache (httpd) PHP and mySql server
 yum install httpd php-devel mysql mysql-server json json-c
 yum install php php-cli php-common php-devel php-pdo php-soap php-mysql php-mcrypt* php-common php-cli php-devel php-fpm php-gd php-imap php-intl php-mysql php-process php-xml php-xmlrpc php-zts
 ```
-Configure apache and set to start on boot
+Configure apache, start it and the set it to start on boot
 ```
 nano /etc/httpd/conf/httpd.conf
 service httpd start
