@@ -84,7 +84,7 @@ At this point
 + the hostname, date & time are set
 + you have a basic webserver installed with PHP and mySQL
 + you know a mySQL username and password
-+ the Xibo specific PHP modules are all installed
++ the Xibo required PHP modules are all installed
 + php has been set to allow larger than normal uploads (necessary for large video files)  
 
 Now download and install xibo into the standard webroot
