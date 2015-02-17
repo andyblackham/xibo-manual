@@ -6,7 +6,8 @@ Centos 6 is available for x86 and x64 archtitecture here: http://wiki.centos.org
 
 Some of the steps below require additional inputs from you the administrator, these are marked; please also refer to the Security Page for further security advice and considerations.
 
-Built-in ethernet is not setup on a fresh install, lets change to DHCP
+Built-in ethernet is not setup on a fresh install, lets change to DHCP;
+Further info on the structure of this file is here: https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-networkscripts-interfaces.html
 ```
 vi /etc/sysconfig/network-scripts/ifcfg-eth0
 ```
