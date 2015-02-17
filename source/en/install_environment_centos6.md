@@ -54,6 +54,7 @@ yum install php php-cli php-common php-devel php-pdo php-soap php-mysql php-mcry
 Configure apache and set to start on boot
 ```
 nano /etc/httpd/conf/httpd.conf
+service httpd start
 chkconfig httpd on
 ```
 
