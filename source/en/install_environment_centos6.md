@@ -106,6 +106,11 @@ ifconfig | grep inet
 it will show you, maybe the last line.
 
 then visit `http://<youripaddress>/xibo`
-and begin the setup
+and begin the setup.
 
-Once it's running, I generally change the webroot directory in httpd.conf to /var/www/html/xibo so the access address is simply `http://<youripaddress>`
+
+Once it's running, I generally change the webroot directory in httpd.conf to /var/www/html/xibo so the access address is simply `http://<youripaddress>` and also remove the downloaded installation archive
+```
+cd /var/www/html
+rm 1.7.1.tar.gz
+```
