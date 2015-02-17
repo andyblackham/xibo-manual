@@ -68,6 +68,10 @@ edit this
 ```
 nano /etc/php.d/json.ini
 ```
+It needs to be like this:
+```
+
+```
 
 edit config php to suit
 ```
