@@ -16,13 +16,12 @@ Set the machines hostname
 hostname XiboCMS
 ```
 
-Disable Security Enhanced Linux and turn off the firewall
+Open port 80 on the built-in firewall
 ```
-vi /etc/sysconfig/selinux
-service iptables stop
-chkconfig iptables off
+iptables -A INPUT -p tcp -m tcp --sport 80 -j ACCEPT iptables -A OUTPUT -p tcp -m tcp --dport 80 -j ACCEPT 
 ```
-restart network services to acquire an IP address
+
+Restart network services to acquire an IP address
 ```
 service network restart
 ```
@@ -41,7 +40,7 @@ ntpdate
 service ntpd start
 chkconfig ntpd on
 ```
-We need additional repositories, lets add them in
+We need additional repositories for Mcrypt, lets add them in
 ```
 wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
@@ -52,13 +51,13 @@ install apache (httpd) PHP and mySql server
 yum install httpd php-devel mysql mysql-server json json-c
 yum install php php-cli php-common php-devel php-pdo php-soap php-mysql php-mcrypt* php-common php-cli php-devel php-fpm php-gd php-imap php-intl php-mysql php-process php-xml php-xmlrpc php-zts
 ```
-configure apache and set to start on boot
+Configure apache and set to start on boot
 ```
 nano /etc/httpd/conf/httpd.conf
 chkconfig httpd on
 ```
 
-start mysql, configure and set to autostart on boot
+Start mysql, configure and set to autostart on boot
 ```
 service mysqld start
 mysql_secure_installation
