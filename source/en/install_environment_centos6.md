@@ -1,10 +1,10 @@
-The commands below are a guide to installing and configuring Xibo on a Centos 6 platform, specifically a Centos 6 Minumal installation.  A typical use case is where your server only has a CD-ROM drive, rather than a DVD-ROM and cannot boot from USB or other media.  Centos 6 Mininal install is available for CD-ROM installation.
+The commands below are a guide to installing and configuring Xibo on a Centos 6 platform, specifically a Centos 6 Minumal installation.  A typical use case is where your server only has a CD-ROM drive - rather than a DVD-ROM and cannot boot from USB or other media.  Centos 6 Mininal install is available for CD-ROM installation.
 
 These instructions assume that your hardware is functioning correctly, any RAID etc is externally managed (maybe in a RAID card) and that a vanilla Centos 6 Mininal Installation has completed suceesfully without errors.
 
 Centos 6 is available for x86 and x64 archtitecture here: http://wiki.centos.org/Download
 
-Some of the steps below require additional inputs from you the administrator, these are marked; please also refer to the Security Page for further security advice and considerations.
+Some of the steps below require additional inputs from you the administrator, please also refer to the Security Page for further security advice and considerations.
 
 Built-in ethernet is not setup on a fresh install, lets change to DHCP;
 Further info on the structure of this file is here: https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-networkscripts-interfaces.html
