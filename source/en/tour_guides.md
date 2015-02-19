@@ -5,7 +5,7 @@ The following guides have been made available from various sources to help you g
 ##Text Guides
 - [Spotlight - Using DataSets to Display Meeting room bookings](http://xibo.org.uk/2014/05/27/using-datasets-to-display-meeting-room-bookings/)
 - [Centos 6 - A walkthrough of a basic Centos 6 Insatllation](http://#)
-- 
+
 ##Video Guides
 - [HOWTO - DataSets](http://xibo.org.uk/2013/02/20/howto-video-series-datasets/)
 - [HOWTO - Adding Users and Groups](http://xibo.org.uk/2013/02/16/howto-video-series-adding-users-and-groups/)
