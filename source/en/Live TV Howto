@@ -11,7 +11,7 @@ This how-to is written
 Hardware:
 Raspberry Pi (this document is tested on a Model B)
 A 4GB SD card with Raspbian
-DVB tuner (I'm using an August T208 from ebay)
+DVB tuner (I'm using an August DVB-T208 from ebay)
  
 Software:
 Raspbian operating system dated 2015-02-16
