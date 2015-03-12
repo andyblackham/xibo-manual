@@ -1,0 +1,63 @@
+This is a guide to showing live TV in a Xibo layout.
+ 
+One solution to the live TV problem is to create an IP video stream and display it in
+an HTML frame.  There  are two applications needed to achieve this:
+ * TVHeadend - which generates the IP video stream and
+ * VLC (Video Lan Client) which displays the stream on the client device.
+ 
+We will assume you are using an Android client for your Xibo server in this example.
+This how-to is written
+ 
+Hardware:
+Raspberry Pi (this document is tested on a Model B)
+A 4GB SD card with Raspbian
+DVB tuner (I'm using an August T208 from ebay)
+ 
+Software:
+Raspbian operating system dated 2015-02-16
+Linux driver for your USB Tuner
+TV Headend
+VLC
+ 
+ 
+Getting started:
+The first task is to make sure you have drivers for your chosen USB TV receiver.
+To test this run the command 
+dmesg
+and look at the last few lines, here are mine:
+
+usb 1-1.2: new high-speed USB device number 5 using dwc_otg
+usb 1-1.2: New USB device found, idVendor=187f, idProduct=0202
+usb 1-1.2: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+usb 1-1.2: Product: MDTV Receiver
+usb 1-1.2: Manufacturer: MDTV Receiver
+DVB: registering new adapter (Siano Nice Digital Receiver)
+usb 1-1.2: DVB: registering adapter 0 frontend 0 (Siano Mobile Digital MDTV Receiver)...
+usbcore: registered new interface driver smsusb
+
+If you get a file not found message here, then you will need to obtain a driver. This
+is somewhat beyond this walk through, however most of the models on the market today
+use one of a few common chipsets.
+
+The August T208 unit I'm using uses a Siano DVD Nova chip.
+to install the driver, change directory 
+````cd /lib/firmware````
+
+download the driver (remember this is the driver I need, yours may be different.
+````sudo wget http://www.linuxtv.org/downloads/firmware/dvb_nova_12mhz_b0.inp````
+
+once the driver is installed, we can install TV Headend and update all the software.
+First add the TV Headend repository
+````cd /etc/apt
+sudo nano sources.list
+	deb http://apt.tvheadend.org/stable wheezy main````
+
+Now add the signing key	
+````curl http://apt.tvheadend.org/repo.gpg.key | sudo apt-key add - ````
+
+Add the repository
+````sudo apt-add-repository http://apt.tvheadend.org/stable````
+
+Finally, update the list of updates and perform the upgrade
+````sudo apt-get update
+sudo apt-get upgrade````
