@@ -1,12 +1,11 @@
 This is a guide to showing live TV in a Xibo layout.
  
-One solution to the live TV problem is to create an IP video stream and display it in
-an HTML frame.  There  are two applications needed to achieve this:
+One solution to the live TV problem is to create an IP video stream of the live broadcast and then display the stream in an HTML frame.  There  are two applications needed to achieve this:
  * TVHeadend - which generates the IP video stream and
  * VLC (Video Lan Client) which displays the stream on the client device.
  
 We will assume you are using an Android client for your Xibo server in this example.
-This how-to is written
+This how-to is written and tested using DVB-T standards, but you should be able to stream any source which is compatible with TVHeadend, including HD material from cable, satellite and terrestrial.
  
 Hardware:
 Raspberry Pi (this document is tested on a Model B)
@@ -14,17 +13,19 @@ A 4GB SD card with Raspbian
 DVB tuner (I'm using an August DVB-T208 from ebay)
  
 Software:
-Raspbian operating system dated 2015-02-16
+Raspbian operating system dated 2015-02-16  (http://www.raspberrypi.org/downloads/)
 Linux driver for your USB Tuner
-TV Headend
-VLC
+TV Headend   (http://tvheadend.org)
+VLC	     (http://www.videolan.org/vlc/download-android.html)
  
  
 Getting started:
+We assume you have your Raspberry Pi setup on your network and you're logged in to the command line.
+
 The first task is to make sure you have drivers for your chosen USB TV receiver.
-To test this run the command 
-dmesg
-and look at the last few lines, here are mine:
+To test this, plug in your USB reciever and run the command
+````dmesg````
+and look at the last few lines, here are the last 8 lines from mine:
 
 usb 1-1.2: new high-speed USB device number 5 using dwc_otg
 usb 1-1.2: New USB device found, idVendor=187f, idProduct=0202
@@ -35,22 +36,24 @@ DVB: registering new adapter (Siano Nice Digital Receiver)
 usb 1-1.2: DVB: registering adapter 0 frontend 0 (Siano Mobile Digital MDTV Receiver)...
 usbcore: registered new interface driver smsusb
 
-If you get a file not found message here, then you will need to obtain a driver. This
+If you get a 'file not found message here', then you will need to obtain a driver. This
 is somewhat beyond this walk through, however most of the models on the market today
 use one of a few common chipsets.
 
 The August T208 unit I'm using uses a Siano DVD Nova chip.
-to install the driver, change directory 
+To install the driver, change directory 
 ````cd /lib/firmware````
 
-download the driver (remember this is the driver I need, yours may be different.
+download the driver (remember this is the driver I need for my adaptor, yours may be different)
 ````sudo wget http://www.linuxtv.org/downloads/firmware/dvb_nova_12mhz_b0.inp````
 
 once the driver is installed, we can install TV Headend and update all the software.
 First add the TV Headend repository
 ````cd /etc/apt
-sudo nano sources.list
-	deb http://apt.tvheadend.org/stable wheezy main````
+sudo nano sources.list````
+
+add the following line to the file
+````deb http://apt.tvheadend.org/stable wheezy main````
 
 Now add the signing key	
 ````curl http://apt.tvheadend.org/repo.gpg.key | sudo apt-key add - ````
@@ -61,3 +64,8 @@ Add the repository
 Finally, update the list of updates and perform the upgrade
 ````sudo apt-get update
 sudo apt-get upgrade````
+
+At this point, I'd reboot and check the dmesg file
+````reboot````
+
+one your're back at the command line, check the driver
