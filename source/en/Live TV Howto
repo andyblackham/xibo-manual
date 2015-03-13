@@ -69,3 +69,45 @@ At this point, I'd reboot and check the dmesg file
 ````reboot````
 
 one your're back at the command line, check the driver
+
+
+
+
+Now for the Xibo bit:
+You need VLC installed on your client machine.
+
+Create an "Embedded" item on a region timeline on a page in Xibo.
+Note: You need either to enable anonymous access to the page or create a user with a non-secure password on the tvheadend box. in the below example, you will need to customise the line:
+
+http://username:password@hostname:9981/playlist/channelid/33
+Settings for the Embedded HTML
+
+HTML To Embed
+
+<body bgcolor="#000000" onload=start()>
+    <object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab" width="749" height="420" id="vlc" events="True">
+      <param name="Src" value="http://username:password@hostname:9981/playlist/channelid/33" />
+      <param name="ShowDisplay" value="False" />
+      <param name="AutoLoop" value="False" />
+      <param name="Controls" value="False" />
+      <param name="AutoPlay" value="True" />
+    </object>
+  </body>
+Head Content to Embed
+
+<script type="text/javascript">
+function EmbedInit() {
+    // Init will be called when this page is loaded in the client.
+    timeout = setTimeout(subtitles,1000);
+    return;
+    }
+function subtitles() {
+    var vlc = document.getElementById("vlc");
+    <!--vlc.audio.toggleMute();-->
+    vlc.subtitle.track='505';
+    vlc.video.deinterlace.enable("blend")
+    }
+</script>
+I had issues getting the embedded VLC to display consistently (i just saw a black page sometimes), and my rather naff solutions were twofold; I added a video item to the Xibo timeline to show the BBC intro (12 seconds), this seems to give the page chance to load properly.. and i inserted a delay in the subtitles loading, which again seems to allow it to load properly. My TV item loads for 720 seconds and then it recycles back to the 12 seconds BBC intro video.
+
+Sorry i can't give you a better guide, i do wish i'd made proper notes when setting it up and if i redo it, i will!!
