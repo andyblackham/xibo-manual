@@ -41,9 +41,7 @@ DVB: registering new adapter (Siano Nice Digital Receiver)
 usb 1-1.2: DVB: registering adapter 0 frontend 0 (Siano Mobile Digital MDTV Receiver)...
 usbcore: registered new interface driver smsusb
 
-If you get a 'file not found message here', then you will need to obtain a driver. This
-is somewhat beyond this walk through, however most of the models on the market today
-use one of a few common chipsets.
+A large number of USB DVD tuners are supported natively by Linux and need no additional software, but if you get a 'file not found message here', then you will need to obtain a driver for your device.  It is possible that your device doesn't have a linux driver and is incompatible but most of the equipment on the market today uses one of a few common chipsets.  
 
 The August T208 unit I'm using uses a Siano DVD Nova chip.
 To install the driver, change directory 
@@ -52,12 +50,15 @@ To install the driver, change directory
 download the driver (remember this is the driver I need for my adaptor, yours may be different)
 ````sudo wget http://www.linuxtv.org/downloads/firmware/dvb_nova_12mhz_b0.inp````
 
-once the driver is installed, we can install TV Headend and update all the software.
+unplug your tuner & reconnect.  then check the driver was OK with dmesg:
+````dmesg````
+
+Once the driver is installed, we can install TV Headend and update all the software.
 First add the TV Headend repository
 ````cd /etc/apt
 sudo nano sources.list````
 
-add the following line to the file
+add the repository source URL to the file with the following line
 ````deb http://apt.tvheadend.org/stable wheezy main````
 
 Now add the signing key	
@@ -70,21 +71,35 @@ Finally, update the list of updates and perform the upgrade
 ````sudo apt-get update
 sudo apt-get upgrade````
 
-At this point, I'd reboot and check the dmesg file
-````reboot````
+The TVHeadend installer will ask you to setup a password.
 
-one your're back at the command line, check the driver
+Once the update and install has completed, I'd reboot and check the dmesg file for warnings or issues
+````dmesg````
 
+Now setup TVHeadend.  
+in a browser goto
+http://raspberryPi.ip.address.here:9981
 
+There are setup guides on youtube if you get stuck.
+This is generally a case of adding a new non-admin user.
+I use xibo and xibo but it can be whatever you want.  This username and password is required later.
+Click config and add your adaptor.
+Scan for multiplexes and add channels
+get the stream address of the channel you want to watch and open it in VLC.
+Many channels carry embedded subtitles as an addition stream.  VLC refers to this as the OSD (on screen display) and it's different 
 
 
 Now for the Xibo bit:
 You need VLC installed on your client machine.
 
 Create an "Embedded" item on a region timeline on a page in Xibo.
-Note: You need either to enable anonymous access to the page or create a user with a non-secure password on the tvheadend box. in the below example, you will need to customise the line:
 
-http://username:password@hostname:9981/playlist/channelid/33
+in the below example, you will need to customise the line:
+
+http://username:password@hostname:9981/playlist/channelid/nn
+
+http://xibo:xibo@10.0.1.13:9981/playlist/channelid/30
+
 Settings for the Embedded HTML
 
 HTML To Embed
