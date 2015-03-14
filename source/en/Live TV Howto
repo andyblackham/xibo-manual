@@ -102,11 +102,63 @@ http://xibo:xibo@10.0.1.13:9981/playlist/channelid/30
 
 Settings for the Embedded HTML
 
-HTML To Embed
+---
+sample code copy and paste play box
+dont actually use this
+
+
+<!DOCTYPE html>
+<html>
+<title>VLC Mozilla plugin test page</title>
+<body>
+<embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org"
+       width="640"
+       height="480"
+       id="vlc" />
+      <param name="Src" value="http://xibo:xibo@hostname:9981/playlist/channelid/30" />
+      <param name="ShowDisplay" value="False" />
+      <param name="AutoLoop" value="False" />
+      <param name="Controls" value="False" />
+      <param name="AutoPlay" value="True" />
+<script type="text/javascript">
+<!--
+var vlc = document.getElementById("vlc");
+vlc.audio.toggleMute();
+//-->
+</script>
+</body>
+</html>
+
+
+
+---
+
+
+<html>
+<head><title>Demo of VLC mozilla plugin</title></head>
+
+<body>
+<h1>Demo of VLC mozilla plugin - Example 1</h1>
+<embed type="application/x-vlc-plugin"
+         name="video1"
+         autoplay="no" loop="no" width="1280" height="720"
+         target="http://server.example.org/video1.vob" />
+<br />
+  <a href="javascript:;" onclick='document.video1.play()'>Play video1</a>
+  <a href="javascript:;" onclick='document.video1.pause()'>Pause video1</a>
+  <a href="javascript:;" onclick='document.video1.stop()'>Stop video1</a>
+  <a href="javascript:;" onclick='document.video1.fullscreen()'>Fullscreen</a>
+
+</body>
+</html>
+
+
+---
+
 
 <body bgcolor="#000000" onload=start()>
     <object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab" width="749" height="420" id="vlc" events="True">
-      <param name="Src" value="http://username:password@hostname:9981/playlist/channelid/33" />
+      <param name="Src" value="http://xibo:xibo@hostname:9981/playlist/channelid/30" />
       <param name="ShowDisplay" value="False" />
       <param name="AutoLoop" value="False" />
       <param name="Controls" value="False" />
@@ -128,6 +180,4 @@ function subtitles() {
     vlc.video.deinterlace.enable("blend")
     }
 </script>
-I had issues getting the embedded VLC to display consistently (i just saw a black page sometimes), and my rather naff solutions were twofold; I added a video item to the Xibo timeline to show the BBC intro (12 seconds), this seems to give the page chance to load properly.. and i inserted a delay in the subtitles loading, which again seems to allow it to load properly. My TV item loads for 720 seconds and then it recycles back to the 12 seconds BBC intro video.
 
-Sorry i can't give you a better guide, i do wish i'd made proper notes when setting it up and if i redo it, i will!!
