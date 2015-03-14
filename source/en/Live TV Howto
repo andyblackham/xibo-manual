@@ -1,14 +1,19 @@
 This is a guide to showing live TV in a Xibo layout.
  
 One solution to the live TV problem is to create an IP video stream of the live broadcast and then display the stream in an HTML frame.  There  are two applications needed to achieve this:
- * TVHeadend - which generates the IP video stream and
+ * TVHeadend - which generates (encodes) the IP video stream and
  * VLC (Video Lan Client) which displays the stream on the client device.
  
 We will assume you are using an Android client for your Xibo server in this example.
 This how-to is written and tested using DVB-T standards, but you should be able to stream any source which is compatible with TVHeadend, including HD material from cable, satellite and terrestrial.
  
+Prerequisites:
+Generating an IP Stream of a DVD broadcast TransportStream is bandwidth intensive.
+It is recommneded that the antenna and the encoder are local to the display client.  If you are a multi-site deployment then you will need mutiple encoders, one for each site.
+
 Hardware:
 Raspberry Pi (this document is tested on a Model B)
+  Any linux machine that can run TV Headned will work, I am using  Raspberry Pi becuase it's inexpensive
 A 4GB SD card with Raspbian
 DVB tuner (I'm using an August DVB-T208 from ebay)
  
